@@ -1,0 +1,94 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+import { dictionary, type Locale } from "@/lib/site-data";
+
+export function ProjectBriefForm({ locale, source = "website" }: { locale: Locale; source?: string }) {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const t = dictionary[locale].form;
+
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setLoading(true);
+    window.setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+    }, 550);
+  }
+
+  return (
+    <section className="brief-section" id="project-brief" aria-labelledby="brief-title">
+      <div className="brief-intro">
+        <span className="section-index">{t.eyebrow}</span>
+        <h2 id="brief-title">{t.title}</h2>
+        <p>{t.intro}</p>
+        <div className="brief-mark" aria-hidden="true">↘</div>
+      </div>
+      <div className="brief-form-wrap">
+        {submitted ? (
+          <div className="form-success" role="status">
+            <span>✓</span>
+            <h3>{t.successTitle}</h3>
+            <p>{t.success}</p>
+            <button type="button" onClick={() => setSubmitted(false)}>
+              {locale === "ru" ? "Отправить еще одну" : "Send another"}
+            </button>
+          </div>
+        ) : (
+          <form className="brief-form" onSubmit={submit}>
+            <input type="hidden" name="source" value={source} />
+            <label>
+              <span>{t.name} *</span>
+              <input name="name" autoComplete="name" required />
+            </label>
+            <label>
+              <span>{t.phone} *</span>
+              <input name="phone" type="tel" autoComplete="tel" required placeholder="+7 900 000-00-00" />
+            </label>
+            <label>
+              <span>{t.contact}</span>
+              <select name="contact" defaultValue="phone">
+                <option value="phone">{locale === "ru" ? "Телефон" : "Phone"}</option>
+                <option value="telegram">Telegram</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="email">Email</option>
+              </select>
+            </label>
+            <label>
+              <span>{t.event}</span>
+              <select name="event" defaultValue="">
+                <option value="" disabled>{locale === "ru" ? "Выберите формат" : "Choose a format"}</option>
+                <option value="corporate">{locale === "ru" ? "Бизнес-событие" : "Business event"}</option>
+                <option value="wedding">{locale === "ru" ? "Свадьба / банкет" : "Wedding / dinner"}</option>
+                <option value="private">{locale === "ru" ? "Частный праздник" : "Private celebration"}</option>
+                <option value="kids">{locale === "ru" ? "Детский праздник" : "Children’s event"}</option>
+                <option value="production">{locale === "ru" ? "Производство объекта" : "Custom production"}</option>
+              </select>
+            </label>
+            <label>
+              <span>{t.city}</span>
+              <input name="city" autoComplete="address-level2" />
+            </label>
+            <label>
+              <span>{t.date}</span>
+              <input name="date" type="date" />
+            </label>
+            <label className="form-wide">
+              <span>{t.message}</span>
+              <textarea name="message" rows={4} />
+            </label>
+            <label className="file-field form-wide">
+              <span>{locale === "ru" ? "Референсы или техническое задание" : "References or brief"}</span>
+              <input name="files" type="file" multiple accept="image/*,.pdf,.doc,.docx" />
+            </label>
+            <div className="form-submit form-wide">
+              <p>{t.consent}</p>
+              <button type="submit" disabled={loading}>{loading ? "…" : `${t.submit} ↗`}</button>
+            </div>
+          </form>
+        )}
+      </div>
+    </section>
+  );
+}
