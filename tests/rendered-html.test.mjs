@@ -30,7 +30,7 @@ test("renders an English page", async () => {
   const response = await render("/en/services");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /We create the space/);
+  assert.match(html, /We design events/);
   assert.match(html, /Business events/);
   assert.match(html, /Discuss the brief/);
 });
@@ -42,7 +42,7 @@ test("renders portfolio and project detail pages", async () => {
   ]);
   assert.equal(portfolioResponse.status, 200);
   assert.equal(projectResponse.status, 200);
-  assert.match(await portfolioResponse.text(), /События, которые/);
+  assert.match(await portfolioResponse.text(), /События с/);
   const projectHtml = await projectResponse.text();
   assert.match(projectHtml, /Cruella Night/);
   assert.match(projectHtml, /Хочу обсудить похожий проект/);
@@ -51,10 +51,10 @@ test("renders portfolio and project detail pages", async () => {
 
 test("renders every top-level menu page independently", async () => {
   const routes = [
-    ["/ru/services", "Создаём пространство"],
-    ["/ru/portfolio", "События, которые"],
-    ["/ru/blog", "Идеи и"],
-    ["/ru/about", "Идея должна"],
+    ["/ru/services", "Оформляем события"],
+    ["/ru/portfolio", "События с"],
+    ["/ru/blog", "Идеи, материалы"],
+    ["/ru/about", "Идея и"],
     ["/ru/contacts", "Начнём"],
   ];
 

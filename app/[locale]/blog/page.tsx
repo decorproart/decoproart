@@ -17,10 +17,23 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   const t = dictionary[locale];
   return (
     <main>
-      <section className="page-hero page-hero-paper journal-hero">
-        <span className="page-number">03 / {locale === "ru" ? "Журнал" : "Journal"}</span>
-        <h1>{locale === "ru" ? "Идеи и" : "Ideas and"}<em>{locale === "ru" ? "пространство" : "space"}</em></h1>
-        <p>{locale === "ru" ? "Рассказываем, как рождаются концепции, работают материалы и строится атмосфера события." : "Stories about how concepts emerge, materials perform and event atmosphere is built."}</p>
+      <section className="editorial-hero editorial-hero-journal">
+        <a className="editorial-hero-media journal-showcase-image" href={`/${locale}/blog/${posts[0].slug}`}>
+          <DecorImage src={posts[0].image} alt={posts[0].title[locale]} priority sizes="(max-width: 760px) 100vw, 52vw" />
+          <span>{locale === "ru" ? "Новый материал" : "New story"} / {posts[0].date}</span>
+        </a>
+        <div className="editorial-hero-copy journal-showcase-copy">
+          <span className="page-number">03 / {locale === "ru" ? "Журнал" : "Journal"}</span>
+          <h1>{locale === "ru" ? "Идеи, материалы" : "Ideas, materials"}<em>{locale === "ru" ? "и пространство" : "and space"}</em></h1>
+          <p>{locale === "ru" ? "Коротко и по делу рассказываем о событийном дизайне: как появляется концепция, выбираются материалы и решаются сложные площадки." : "Clear notes on event design: how concepts emerge, materials are chosen and challenging venues are solved."}</p>
+          <div className="journal-feature">
+            <span>{locale === "ru" ? "Свежий материал" : "Latest story"}</span>
+            <strong>{posts[0].title[locale]}</strong>
+            <a className="hero-primary-link" href={`/${locale}/blog/${posts[0].slug}`}>
+              {locale === "ru" ? "Читать" : "Read"}<b>↗</b>
+            </a>
+          </div>
+        </div>
       </section>
       <section className="journal-list section-pad">
         {posts.map((post, index) => (

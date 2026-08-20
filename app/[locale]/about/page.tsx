@@ -16,9 +16,22 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   if (!isLocale(locale)) notFound();
   return (
     <main>
-      <section className="about-hero">
-        <div className="about-title"><span className="page-number">04 / {locale === "ru" ? "О нас" : "About"}</span><h1>{locale === "ru" ? "Идея должна" : "An idea must"}<em>{locale === "ru" ? "стать реальностью" : "become real"}</em></h1></div>
-        <div className="about-image"><DecorImage src="/img/e92ac341-27e1-448d-84b3-801b3fd36974.jpg" alt={locale === "ru" ? "Команда на монтаже большой площадки" : "Team installing a large venue"} priority /></div>
+      <section className="editorial-hero editorial-hero-about">
+        <div className="editorial-hero-copy">
+          <span className="page-number">04 / {locale === "ru" ? "О студии" : "About the studio"}</span>
+          <h1>{locale === "ru" ? "Идея и" : "Idea and"}<em>{locale === "ru" ? "реализация" : "execution"}</em></h1>
+          <p>{locale === "ru" ? "DECOPROART — студия событийного дизайна полного цикла. Художники, проектировщики и монтажная команда ведут проект вместе — от первого эскиза до открытия дверей." : "DECOPROART is a full-service event design studio. Artists, engineers and installers work as one team from the first sketch to opening day."}</p>
+          <div className="hero-service-notes">
+            <span>{locale === "ru" ? "Одна команда" : "One team"}</span>
+            <span>{locale === "ru" ? "Свой цех" : "In-house workshop"}</span>
+            <span>{locale === "ru" ? "Полный цикл" : "Full service"}</span>
+          </div>
+          <a className="hero-primary-link" href={`/${locale}/contacts#project-brief`}>{locale === "ru" ? "Познакомиться" : "Start a conversation"}<b>↗</b></a>
+        </div>
+        <div className="editorial-hero-media about-image">
+          <DecorImage src="/img/e92ac341-27e1-448d-84b3-801b3fd36974.jpg" alt={locale === "ru" ? "Команда на монтаже большой площадки" : "Team installing a large venue"} priority sizes="(max-width: 760px) 100vw, 58vw" />
+          <span className="media-caption">{locale === "ru" ? "НА ПЛОЩАДКЕ / МОСКВА" : "ON SITE / MOSCOW"}</span>
+        </div>
       </section>
       <section className="about-manifesto section-pad">
         <span className="section-index">DECOPROART / {locale === "ru" ? "Подход" : "Approach"}</span>

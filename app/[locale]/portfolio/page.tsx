@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { DecorImage } from "@/components/DecorImage";
 import { PortfolioGrid } from "@/components/PortfolioGrid";
 import { ProjectBriefForm } from "@/components/ProjectBriefForm";
 import { localizedMetadata } from "@/lib/metadata";
-import { isLocale } from "@/lib/site-data";
+import { isLocale, projects } from "@/lib/site-data";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -16,12 +17,29 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
   if (!isLocale(locale)) notFound();
   return (
     <main>
-      <section className="page-hero page-hero-coral portfolio-hero">
-        <span className="page-number">02 / {locale === "ru" ? "Портфолио" : "Portfolio"}</span>
-        <h1>{locale === "ru" ? "События, которые" : "Events people"}<em>{locale === "ru" ? "помнят" : "remember"}</em></h1>
-        <p>{locale === "ru" ? "Каждый проект — отдельная визуальная история, созданная для конкретного пространства и людей." : "Each project is a distinct visual story created for a specific place and people."}</p>
+      <section className="editorial-hero editorial-hero-portfolio">
+        <div className="editorial-hero-copy">
+          <span className="page-number">02 / {locale === "ru" ? "Портфолио" : "Portfolio"}</span>
+          <h1>{locale === "ru" ? "События с" : "Events with"}<em>{locale === "ru" ? "характером" : "character"}</em></h1>
+          <p>{locale === "ru" ? "Подборка пространств, в которых концепция, декор и свет работают как единая история — для бренда, семьи или большого сообщества." : "A selection of spaces where concept, decor and light work as one story — for a brand, a family or a large community."}</p>
+          <div className="hero-service-notes">
+            <span>{locale === "ru" ? "Бизнес" : "Business"}</span>
+            <span>{locale === "ru" ? "Частные" : "Private"}</span>
+            <span>{locale === "ru" ? "Детские" : "Children"}</span>
+          </div>
+          <a className="hero-primary-link" href="#selected-projects">{locale === "ru" ? "Смотреть проекты" : "View projects"}<b>↓</b></a>
+        </div>
+        <div className="editorial-hero-media portfolio-collage" aria-label={locale === "ru" ? "Избранные проекты" : "Selected projects"}>
+          {projects.slice(0, 3).map((project, index) => (
+            <a className={`portfolio-collage-item collage-item-${index + 1}`} href={`/${locale}/portfolio/${project.slug}`} key={project.slug}>
+              <DecorImage src={project.cover} alt={project.title[locale]} priority={index < 2} sizes="(max-width: 760px) 100vw, 55vw" />
+              <span><b>0{index + 1}</b>{project.title[locale]}</span>
+            </a>
+          ))}
+          <div className="media-caption">DECOPROART / {locale === "ru" ? "ИЗБРАННЫЕ ПРОЕКТЫ" : "SELECTED WORK"}</div>
+        </div>
       </section>
-      <section className="portfolio-section section-pad"><PortfolioGrid locale={locale} /></section>
+      <section className="portfolio-section section-pad" id="selected-projects"><PortfolioGrid locale={locale} /></section>
       <ProjectBriefForm locale={locale} source="portfolio" />
     </main>
   );

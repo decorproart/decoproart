@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DecorImage } from "@/components/DecorImage";
+import { ProjectGallery } from "@/components/ProjectGallery";
 import { ProjectBriefForm } from "@/components/ProjectBriefForm";
 import { localizedMetadata } from "@/lib/metadata";
 import { isLocale, locales, projects } from "@/lib/site-data";
@@ -34,14 +35,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
         </div>
         <div className="project-hero-image"><DecorImage src={project.cover} alt={project.title[locale]} priority /></div>
       </section>
-      <section className="project-gallery section-pad" aria-label={locale === "ru" ? "Галерея проекта" : "Project gallery"}>
-        {project.images.map((image, index) => (
-          <figure key={image} className={`gallery-item gallery-item-${(index % 4) + 1}`}>
-            <DecorImage src={image} alt={`${project.title[locale]} — ${index + 1}`} sizes="(max-width: 760px) 100vw, 58vw" priority={index < 2} />
-            <figcaption>0{index + 1} / {project.title[locale]}</figcaption>
-          </figure>
-        ))}
-      </section>
+      <ProjectGallery images={project.images} title={project.title[locale]} locale={locale} />
       <ProjectBriefForm locale={locale} source={`project:${project.slug}`} />
     </main>
   );

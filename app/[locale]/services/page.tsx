@@ -16,25 +16,42 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   if (!isLocale(locale)) notFound();
   return (
     <main>
-      <section className="page-hero page-hero-petrol">
-        <span className="page-number">01 / {locale === "ru" ? "Услуги" : "Services"}</span>
-        <h1>{locale === "ru" ? "Создаём пространство" : "We create the space"}<em>{locale === "ru" ? "целиком" : "as a whole"}</em></h1>
-        <p>{locale === "ru" ? "От камерной фотозоны до оформления большой площадки. Одна команда отвечает за идею, производство и монтаж." : "From an intimate photo setting to a large venue. One team owns the idea, production and installation."}</p>
+      <section className="editorial-hero editorial-hero-services">
+        <div className="editorial-hero-copy">
+          <span className="page-number">01 / {locale === "ru" ? "Услуги" : "Services"}</span>
+          <h1>{locale === "ru" ? "Оформляем события" : "We design events"}<em>{locale === "ru" ? "от идеи до монтажа" : "from idea to installation"}</em></h1>
+          <p>{locale === "ru" ? "Разрабатываем концепцию, создаём декорации в собственном производстве и собираем готовое пространство на площадке." : "We develop the concept, build the decor in-house and assemble the finished environment on site."}</p>
+          <div className="hero-service-notes" aria-label={locale === "ru" ? "Что входит в работу" : "What is included"}>
+            <span>{locale === "ru" ? "Концепция" : "Concept"}</span>
+            <span>{locale === "ru" ? "Производство" : "Production"}</span>
+            <span>{locale === "ru" ? "Монтаж" : "Installation"}</span>
+          </div>
+          <a className="hero-primary-link" href={`/${locale}/contacts#project-brief`}>{locale === "ru" ? "Обсудить событие" : "Discuss your event"}<b>↗</b></a>
+        </div>
+        <div className="editorial-hero-media">
+          <DecorImage src="/img/services-hero-2026.png" alt={locale === "ru" ? "Современная событийная декорация со сценой, текстилем и светом" : "Contemporary event setting with stage, textiles and light"} priority sizes="(max-width: 760px) 100vw, 58vw" />
+          <span className="media-caption">DECOPROART / {locale === "ru" ? "ПОЛНЫЙ ЦИКЛ" : "FULL SERVICE"}</span>
+        </div>
       </section>
 
-      <section className="services-editorial">
+      <section className="services-intro section-pad">
+        <span className="section-index">{locale === "ru" ? "Направления" : "Directions"}</span>
+        <div>
+          <h2>{locale === "ru" ? "Что мы можем создать" : "What we can create"}</h2>
+          <p>{locale === "ru" ? "Подбираем состав работ под формат события: от одного выразительного объекта до комплексного оформления всей площадки." : "We tailor the scope to the event: from one expressive object to the complete design of an entire venue."}</p>
+        </div>
+      </section>
+
+      <section className="services-editorial" aria-label={locale === "ru" ? "Наши услуги" : "Our services"}>
         {services.map((service, index) => (
           <article className="service-editorial" id={service.slug} key={service.slug}>
-            <div className="service-number">{service.number}</div>
-            <div className="service-picture"><DecorImage src={service.image} alt={service.title[locale]} priority={index === 0} /></div>
+            <div className="service-picture"><DecorImage src={service.image} alt={service.title[locale]} priority={index < 2} /></div>
             <div className="service-content">
+              <span className="service-number">{service.number} / {locale === "ru" ? "Услуга" : "Service"}</span>
               <h2>{service.title[locale]}</h2>
               <p>{service.description[locale]}</p>
               <ul>
-                {(locale === "ru"
-                  ? ["Концепция и визуальное направление", "Конструкции и авторские объекты", "Свет, текстиль, графика и флористика", "Доставка, монтаж и демонтаж"]
-                  : ["Concept and visual direction", "Structures and bespoke objects", "Lighting, textiles, graphics and florals", "Delivery, installation and dismantling"]
-                ).map((item) => <li key={item}>{item}</li>)}
+                {service.features[locale].map((item) => <li key={item}>{item}</li>)}
               </ul>
               <a className="solid-link" href={`/${locale}/contacts#project-brief`}>{locale === "ru" ? "Обсудить задачу" : "Discuss the brief"} ↗</a>
             </div>

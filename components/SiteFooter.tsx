@@ -12,12 +12,6 @@ export function SiteFooter({ locale }: { locale: Locale }) {
 
   return (
     <footer className="site-footer">
-      <div className="footer-lead">
-        <p>{locale === "ru" ? "Есть идея?" : "Have an idea?"}</p>
-        <a href={`/${locale}/contacts#project-brief`}>
-          {locale === "ru" ? "Давайте создадим событие" : "Let’s create an event"} <span>↗</span>
-        </a>
-      </div>
       <div className="footer-grid">
         <div>
           <a className="footer-brand" href={`/${locale}`}>DECOPROART</a>

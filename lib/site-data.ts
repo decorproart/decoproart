@@ -92,6 +92,10 @@ export const services = [
       ru: "Форумы, презентации, сцены, навигация и масштабная пространственная айдентика.",
       en: "Forums, launches, stages, wayfinding and large-scale spatial identity.",
     },
+    features: {
+      ru: ["Концепция и брендирование площадки", "Сцены, пресс-воллы и фотозоны", "Навигация, свет и техническое оформление"],
+      en: ["Venue concept and spatial branding", "Stages, media walls and photo settings", "Wayfinding, lighting and technical design"],
+    },
     image: "/img/087d8e28-c7cf-462b-b3b4-5e73d5bee475.jpg",
   },
   {
@@ -101,6 +105,10 @@ export const services = [
     description: {
       ru: "Цельная атмосфера пространства — от церемонии до света, флористики и сервировки.",
       en: "A complete spatial atmosphere — from ceremony to lighting, florals and table styling.",
+    },
+    features: {
+      ru: ["Оформление церемонии и welcome-зоны", "Флористика, текстиль и сервировка", "Световой сценарий и банкетная зона"],
+      en: ["Ceremony and welcome-area design", "Florals, textiles and table styling", "Lighting direction and dinner setting"],
     },
     image: "/img/0b22f99f-bf3c-486b-929b-60cd6a33c112.jpg",
   },
@@ -112,6 +120,10 @@ export const services = [
       ru: "Дни рождения и юбилеи с персональной графикой, светом и авторскими объектами.",
       en: "Birthdays and anniversaries with personal graphics, light and bespoke objects.",
     },
+    features: {
+      ru: ["Персональная сценография и графика", "Тематические фотозоны и арт-объекты", "Сцена, свет и оформление столов"],
+      en: ["Personal scenography and graphics", "Themed photo settings and art objects", "Stage, lighting and table design"],
+    },
     image: "/img/b773daa4-313d-49fe-b630-f06f58dd6acf.jpg",
   },
   {
@@ -122,6 +134,10 @@ export const services = [
       ru: "Безопасные сказочные пространства, в которых декор становится частью игры.",
       en: "Safe imaginative spaces where decor becomes part of the experience.",
     },
+    features: {
+      ru: ["Тематическая концепция по интересам ребёнка", "Безопасные игровые декорации", "Фотозоны, сладкий стол и детали праздника"],
+      en: ["A theme shaped around the child", "Safe interactive decorations", "Photo settings, dessert table and party details"],
+    },
     image: "/img/7d6b4e6d-c471-4393-88ec-266452e10743.jpg",
   },
   {
@@ -131,6 +147,10 @@ export const services = [
     description: {
       ru: "Конструкции, арт-объекты, текстиль, свет и нестандартные решения собственного изготовления.",
       en: "Structures, art objects, textiles, light and custom-built solutions.",
+    },
+    features: {
+      ru: ["Декорации и сложные конструкции", "Печать, текстиль, покраска и свет", "Доставка, монтаж и демонтаж"],
+      en: ["Decor and engineered structures", "Print, textiles, painting and light", "Delivery, installation and dismantling"],
     },
     image: "/img/e770d901-dfdf-45de-8e19-e02e6817aa38.jpg",
   },
