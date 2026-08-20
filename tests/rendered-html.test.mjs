@@ -16,8 +16,8 @@ test("renders the Russian home page and separate navigation routes", async () =>
   const response = await render("/ru");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Архитектура/);
-  assert.match(html, /событий/);
+  assert.match(html, /Создаём события/);
+  assert.match(html, /которые остаются/);
   assert.match(html, /href="\/ru\/services"/);
   assert.match(html, /href="\/ru\/portfolio"/);
   assert.match(html, /href="\/ru\/blog"/);

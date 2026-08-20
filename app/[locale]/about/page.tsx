@@ -8,7 +8,7 @@ import { isLocale } from "@/lib/site-data";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return localizedMetadata(locale, locale === "ru" ? "О студии" : "About the studio", locale === "ru" ? "DECOPROART — команда концепции, производства и монтажа событийных декораций." : "DECOPROART is one team for event concept, production and installation.", "/about", "/img/e92ac341-27e1-448d-84b3-801b3fd36974.jpg");
+  return localizedMetadata(locale, locale === "ru" ? "О студии" : "About the studio", locale === "ru" ? "DECOPROART — команда концепции, производства и монтажа событийных декораций." : "DECOPROART is one team for event concept, production and installation.", "/about", "/img/about-hero-beige-2026.png");
 }
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -29,8 +29,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <a className="hero-primary-link" href={`/${locale}/contacts#project-brief`}>{locale === "ru" ? "Познакомиться" : "Start a conversation"}<b>↗</b></a>
         </div>
         <div className="editorial-hero-media about-image">
-          <DecorImage src="/img/e92ac341-27e1-448d-84b3-801b3fd36974.jpg" alt={locale === "ru" ? "Команда на монтаже большой площадки" : "Team installing a large venue"} priority sizes="(max-width: 760px) 100vw, 58vw" />
-          <span className="media-caption">{locale === "ru" ? "НА ПЛОЩАДКЕ / МОСКВА" : "ON SITE / MOSCOW"}</span>
+          <DecorImage src="/img/about-hero-beige-2026.png" alt={locale === "ru" ? "Мастерская с макетами и элементами декора" : "Workshop with models and decor elements"} priority sizes="(max-width: 760px) 100vw, 58vw" />
+          <span className="media-caption">DECOPROART / {locale === "ru" ? "СОБСТВЕННОЕ ПРОИЗВОДСТВО" : "IN-HOUSE PRODUCTION"}</span>
         </div>
       </section>
       <section className="about-manifesto section-pad">

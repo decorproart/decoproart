@@ -24,30 +24,21 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <main>
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-copy">
-          <div className="eyebrow">
-            {locale === "ru" ? "Декор · Производство · Монтаж" : "Decor · Production · Installation"}
+      <section className="editorial-hero editorial-hero-home" aria-labelledby="hero-title">
+        <div className="editorial-hero-copy">
+          <span className="page-number">00 / {locale === "ru" ? "Событийный дизайн" : "Event design"}</span>
+          <h1 id="hero-title">{locale === "ru" ? "Создаём события" : "We create events"}<em>{locale === "ru" ? "которые остаются" : "that stay with you"}</em></h1>
+          <p>{locale === "ru" ? "Превращаем идею в цельное пространство: придумываем концепцию, создаём декорации и отвечаем за результат на площадке." : "We turn an idea into a complete environment: shaping the concept, building the decor and owning the result on site."}</p>
+          <div className="hero-service-notes">
+            <span>{locale === "ru" ? "Концепция" : "Concept"}</span>
+            <span>{locale === "ru" ? "Декор" : "Decor"}</span>
+            <span>{locale === "ru" ? "Монтаж" : "Installation"}</span>
           </div>
-          <h1 id="hero-title">
-            {locale === "ru" ? "Архитектура" : "Architecture"}
-            <em>{locale === "ru" ? "событий" : "of events"}</em>
-          </h1>
-          <div className="hero-lead">
-            <p>
-              {locale === "ru"
-                ? "Создаём авторские декорации и пространства, которые становятся главным впечатлением вашего события."
-                : "We create bespoke decor and spaces that become the defining impression of your event."}
-            </p>
-            <a className="arrow-link" href={`/${locale}/contacts#project-brief`} aria-label={t.discuss}>↗</a>
-          </div>
+          <a className="hero-primary-link" href={`/${locale}/contacts#project-brief`}>{t.discuss}<b>↗</b></a>
         </div>
-        <div className="hero-visual">
-          <DecorImage src="/img/c31dcd30-1376-4ab9-a167-ed27d5d74e96.jpg" alt={locale === "ru" ? "Авторская фотозона в красно-черной палитре" : "Bespoke red and black photo setting"} priority />
-          <div className="image-index">
-            {locale === "ru" ? "Проект / 01" : "Project / 01"}
-            <strong>Cruella Night</strong>
-          </div>
+        <div className="editorial-hero-media">
+          <DecorImage src="/img/home-hero-beige-2026.png" alt={locale === "ru" ? "Авторское пространство с арками, текстилем и тёплым светом" : "Bespoke event environment with arches, textiles and warm light"} priority sizes="(max-width: 760px) 100vw, 58vw" />
+          <span className="media-caption">DECOPROART / {locale === "ru" ? "АРХИТЕКТУРА СОБЫТИЙ" : "EVENT ARCHITECTURE"}</span>
         </div>
       </section>
 

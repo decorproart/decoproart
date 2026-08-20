@@ -18,10 +18,6 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   return (
     <main>
       <section className="editorial-hero editorial-hero-journal">
-        <a className="editorial-hero-media journal-showcase-image" href={`/${locale}/blog/${posts[0].slug}`}>
-          <DecorImage src={posts[0].image} alt={posts[0].title[locale]} priority sizes="(max-width: 760px) 100vw, 52vw" />
-          <span>{locale === "ru" ? "Новый материал" : "New story"} / {posts[0].date}</span>
-        </a>
         <div className="editorial-hero-copy journal-showcase-copy">
           <span className="page-number">03 / {locale === "ru" ? "Журнал" : "Journal"}</span>
           <h1>{locale === "ru" ? "Идеи, материалы" : "Ideas, materials"}<em>{locale === "ru" ? "и пространство" : "and space"}</em></h1>
@@ -34,6 +30,10 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
             </a>
           </div>
         </div>
+        <a className="editorial-hero-media journal-showcase-image" href={`/${locale}/blog/${posts[0].slug}`}>
+          <DecorImage src="/img/journal-hero-beige-2026.png" alt={locale === "ru" ? "Материалы и макеты для разработки событийной концепции" : "Materials and models for an event design concept"} priority sizes="(max-width: 760px) 100vw, 58vw" />
+          <span>{locale === "ru" ? "Новый материал" : "New story"} / {posts[0].date}</span>
+        </a>
       </section>
       <section className="journal-list section-pad">
         {posts.map((post, index) => (

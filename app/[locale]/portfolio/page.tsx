@@ -4,12 +4,12 @@ import { DecorImage } from "@/components/DecorImage";
 import { PortfolioGrid } from "@/components/PortfolioGrid";
 import { ProjectBriefForm } from "@/components/ProjectBriefForm";
 import { localizedMetadata } from "@/lib/metadata";
-import { isLocale, projects } from "@/lib/site-data";
+import { isLocale } from "@/lib/site-data";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return localizedMetadata(locale, locale === "ru" ? "Портфолио" : "Portfolio", locale === "ru" ? "Избранные проекты DECOPROART: частные, корпоративные и детские события." : "Selected DECOPROART projects for private, business and children’s events.", "/portfolio", "/img/c31dcd30-1376-4ab9-a167-ed27d5d74e96.jpg");
+  return localizedMetadata(locale, locale === "ru" ? "Портфолио" : "Portfolio", locale === "ru" ? "Избранные проекты DECOPROART: частные, корпоративные и детские события." : "Selected DECOPROART projects for private, business and children’s events.", "/portfolio", "/img/portfolio-hero-beige-2026.png");
 }
 
 export default async function PortfolioPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -29,14 +29,9 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
           </div>
           <a className="hero-primary-link" href="#selected-projects">{locale === "ru" ? "Смотреть проекты" : "View projects"}<b>↓</b></a>
         </div>
-        <div className="editorial-hero-media portfolio-collage" aria-label={locale === "ru" ? "Избранные проекты" : "Selected projects"}>
-          {projects.slice(0, 3).map((project, index) => (
-            <a className={`portfolio-collage-item collage-item-${index + 1}`} href={`/${locale}/portfolio/${project.slug}`} key={project.slug}>
-              <DecorImage src={project.cover} alt={project.title[locale]} priority={index < 2} sizes="(max-width: 760px) 100vw, 55vw" />
-              <span><b>0{index + 1}</b>{project.title[locale]}</span>
-            </a>
-          ))}
-          <div className="media-caption">DECOPROART / {locale === "ru" ? "ИЗБРАННЫЕ ПРОЕКТЫ" : "SELECTED WORK"}</div>
+        <div className="editorial-hero-media">
+          <DecorImage src="/img/portfolio-hero-beige-2026.png" alt={locale === "ru" ? "Сценография события с архитектурными формами и светом" : "Event scenography with architectural forms and lighting"} priority sizes="(max-width: 760px) 100vw, 58vw" />
+          <span className="media-caption">DECOPROART / {locale === "ru" ? "ИЗБРАННЫЕ ПРОЕКТЫ" : "SELECTED WORK"}</span>
         </div>
       </section>
       <section className="portfolio-section section-pad" id="selected-projects"><PortfolioGrid locale={locale} /></section>

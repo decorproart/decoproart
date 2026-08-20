@@ -23,16 +23,23 @@ export function ProjectBriefForm({ locale, source = "website" }: { locale: Local
   }
 
   return (
-    <section className="brief-section" id="project-brief" aria-labelledby="brief-title">
+    <section
+      className={`brief-section${source === "contacts" ? " brief-section-contacts" : ""}`}
+      id="project-brief"
+      aria-labelledby="brief-title"
+    >
       <div className="brief-intro">
         <span className="section-index">{t.eyebrow}</span>
-        <h2 id="brief-title">{t.title}</h2>
+        <h2 id="brief-title">
+          <span>{locale === "ru" ? "Расскажите" : "Tell us"}</span>
+          <em>{locale === "ru" ? "о событии" : "about your event"}</em>
+        </h2>
         <p>{t.intro}</p>
-        <a
-          className="brief-mark"
-          href="#brief-name"
-          aria-label={locale === "ru" ? "Перейти к заполнению формы" : "Start filling out the form"}
-        />
+        <div className="brief-points" aria-label={locale === "ru" ? "Что рассказать" : "What to include"}>
+          <span>{locale === "ru" ? "Формат" : "Format"}</span>
+          <span>{locale === "ru" ? "Дата" : "Date"}</span>
+          <span>{locale === "ru" ? "Площадка" : "Venue"}</span>
+        </div>
       </div>
       <div className="brief-form-wrap">
         {submitted ? (
