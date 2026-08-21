@@ -1918,24 +1918,19 @@ img {
 }
 
 .portfolio-filters {
-  display: flex;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   margin-bottom: 70px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.portfolio-filters::-webkit-scrollbar {
-  display: none;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  width: 100%;
 }
 
 .portfolio-filters button {
-  flex: 1;
   min-height: 56px;
-  padding: 0 28px;
+  padding: 0 16px;
   border: 0;
   border-right: 1px solid var(--line);
   background: transparent;
@@ -1946,6 +1941,14 @@ img {
   cursor: pointer;
   transition: background-color 300ms ease, color 300ms ease;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.portfolio-filters button:last-child {
+  border-right: 0;
 }
 
 .portfolio-filters button.active,
@@ -2881,8 +2884,15 @@ img {
 
 
 
+  .portfolio-filters {
+    margin-bottom: 40px;
+  }
+
   .portfolio-filters button {
-    flex: 0 0 auto;
+    min-height: 48px;
+    padding: 0 2px;
+    font-size: clamp(8px, 2.2vw, 10px);
+    letter-spacing: 0.04em;
   }
 
   .project-hero {
